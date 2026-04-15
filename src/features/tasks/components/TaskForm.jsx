@@ -1,16 +1,18 @@
+import { TASK_UI_TEXT } from "../constants/task-ui.constants"
+
 export function TaskForm({ taskText, onTaskTextChange, onAddTask }) {
   return (
     <section>
-      <h3>Agregar tarea</h3>
+      <h3>{TASK_UI_TEXT.FORM_TITLE}</h3>
 
       <input
         type="text"
         value={taskText}
         onChange={onTaskTextChange}
-        placeholder="Escriba una tarea"
+        placeholder={TASK_UI_TEXT.INPUT_PLACEHOLDER}
       />
 
-      <button onClick={onAddTask}>Agregar</button>
+      <button onClick={onAddTask}>{TASK_UI_TEXT.ADD_BUTTON}</button>
     </section>
   )
 }

@@ -1,12 +1,42 @@
-import { TaskBoard } from "./features/tasks/components/TaskBoard"
+import { useState } from "react"
+import { TaskForm } from "./TaskForm"
+import { TaskList } from "./TaskList"
+import { TASK_UI_TEXT } from "../constants/task-ui.constants"
 
-function App() {
+export function TaskBoard() {
+  const [taskText, setTaskText] = useState("")
+  const [tasks, setTasks] = useState([])
+
+  const handleTaskTextChange = (event) => {
+    setTaskText(event.target.value)
+  }
+
+  const handleAddTask = () => {
+    if (taskText.trim() === "") {
+      return
+    }
+
+    const newTask = {
+      id: Date.now(),
+      title: taskText,
+      completed: false,
+    }
+
+    setTasks([...tasks, newTask])
+    setTaskText("")
+  }
+
   return (
-    <main>
-      <h1>TaskBoard Hooks Lab</h1>
-      <TaskBoard />
-    </main>
+    <section>
+      <h2>{TASK_UI_TEXT.BOARD_TITLE}</h2>
+
+      <TaskForm
+        taskText={taskText}
+        onTaskTextChange={handleTaskTextChange}
+        onAddTask={handleAddTask}
+      />
+
+      <TaskList tasks={tasks} />
+    </section>
   )
 }
-
-export default App
