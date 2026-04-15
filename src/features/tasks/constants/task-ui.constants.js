@@ -5,4 +5,5 @@ export const TASK_UI_TEXT = {
     INPUT_PLACEHOLDER: "Escriba una tarea",
     ADD_BUTTON: "Agregar",
     EMPTY_MESSAGE: "No hay tareas registradas",
+    FORM_TITLE: "Titulo de la tarea"
 }
